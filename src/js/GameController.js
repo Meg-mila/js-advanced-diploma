@@ -8,7 +8,6 @@ import Swordsman from './Swordsman';
 import Undead from './Undead';
 import { generateTeam } from './generators';
 import GamePlay from './GamePlay';
-import { userTypes } from './allowedTypes';
 
 export default class GameController {
   constructor(gamePlay, stateService) {
@@ -82,11 +81,10 @@ export default class GameController {
     console.log('positionChar', positionChar);
 
     if (positionChar !== undefined) {
-      const player = userTypes.find((item) => positionChar.character instanceof item);
       if (this.activeplayer !== null) {
         this.gamePlay.deselectCell(this.activeplayer);
       }
-      if (player) {
+      if (positionChar.character.isUser) {
         this.gamePlay.selectCell(index);
         this.activeplayer = index;
         console.log(this.activeplayer);

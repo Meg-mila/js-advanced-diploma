@@ -7,5 +7,6 @@ export default class Swordsman extends Character {
     this.defence = 10;
     this.walkRange = 4;
     this.attackRange = 4;
+    this.isUser = true;
   }
 }
